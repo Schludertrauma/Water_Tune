@@ -4,32 +4,35 @@
 
 void PDC::pd_calculator::pd_calculate()
 {
-    constexpr double Target_ph = 6.3;
-    constexpr double Ph_down_ml = 0.1;
-    constexpr double Ph_down_ph = 0.5;
+    constexpr double target_ph = 6.3;
+    constexpr double ph_down_ml = 0.1;
+    constexpr double ph_down_ph = 0.5;
     
-    double Current_ph;
-    double Water_liter;
+    double current_ph;
+    double water_liter;
 
 
     std::cout << "\n" << "Info: You need a Ph Down(BioBizz) and a Ph Meter.\n";
 
     std::cout << "\n" << "How much Ph have you current in your Water: ";
-    std::cin >> Current_ph;
-
-    std::cout << "How much Liter Water do you need: ";
-    std::cin >> Water_liter; 
-
-    
-    if (Water_liter <= 0)
+    std::cin >> current_ph;
+    if (current_ph <= target_ph)
     {
-        std::cout << "Error: No need to convert nothing!\n";
+        std::cerr << "Error: No pH Up calculation!\n";
+    }
+    
+    std::cout << "How much Liter Water do you need: ";
+    std::cin >> water_liter; 
+  
+    if (water_liter <= 0)
+    {
+        std::cerr << "Error: No need to convert nothing!\n";
     }
     else
     {
-        double Ph_difference = Current_ph-Target_ph;
-        double Need_ph_down = Ph_difference/Ph_down_ph*Ph_down_ml*Water_liter;
+        double ph_difference = current_ph-target_ph;
+        double need_ph_down = ph_difference/ph_down_ph*ph_down_ml*water_liter;
 
-        std::cout << "\n" << "You need " << Need_ph_down <<"-ml PH-Down, on " << Water_liter <<"-Liter Water to reach around " << Target_ph << "-Ph.\n" << "\n";
+        std::cout << "\n" << "You need " << need_ph_down <<"-ml PH-Down, on " << water_liter <<"-Liter Water to reach around " << target_ph << "-Ph.\n" << "\n";
     }
 }

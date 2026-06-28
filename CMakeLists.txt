@@ -5,6 +5,8 @@ add_executable(Water_Tune
     main.cpp
     src/calcium_magnesium_calculator.cpp
     src/ph_down_calculator.cpp
+    src/config.cpp
 )
 
 target_include_directories(Water_Tune PRIVATE include)
+target_include_directories(Water_Tune PRIVATE data)
