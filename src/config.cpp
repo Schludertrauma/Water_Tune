@@ -25,26 +25,47 @@ void CFG::cf_config::cf_configuration()
 
     std::cout << "How much Calcium(mg) is in your Water: ";
     std::cin >> value_calcium_water;
-    file << name_calcium_water << value_calcium_water << "\n";
-    if (file.fail())
+    if (value_calcium_water <= 0)
     {
-        std::cerr << "Data can not be saved!\n";
+        std::cerr << "No need for nothing!\n";
+    }
+    else
+    {
+        file << name_calcium_water << value_calcium_water << "\n";
+            if (file.fail())
+            {
+                std::cerr << "Data can not be saved!\n";
+            }
     }
     
     std::cout << "How much Magnesium(mg) is in your Water: ";
     std::cin >> value_magnesium_water;
-    file << name_calcium_water << value_magnesium_water << "\n";
-    if (file.fail())
+    if (value_magnesium_water <= 0)
     {
-        std::cerr << "Data can not be saved!\n";
+        std::cerr << "No need for nothing!\n";
+    }
+    else
+    {
+        file << name_calcium_water << value_magnesium_water << "\n";
+            if (file.fail())
+            {
+                std::cerr << "Data can not be saved!\n";
+            }
     }
     
     std::cout << "How much MgSO₄7H₂O(mg) is in your Bittersalt: ";
     std::cin >> value_magnesium_sulfat;
-    file << name_magnesium_sulfat << value_magnesium_sulfat << "\n";
-    if (file.fail())
+    if (value_magnesium_sulfat <= 0)
     {
-        std::cerr << "Data can not be saved!\n";
+        std::cerr << "No need for nothing!\n";
+    }
+    else
+    {
+        file << name_magnesium_sulfat << value_magnesium_sulfat << "\n";
+            if (file.fail())
+            {
+                std::cerr << "Data can not be saved!\n";
+            }
     }
     
     file.close();

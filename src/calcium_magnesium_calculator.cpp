@@ -2,18 +2,37 @@
 #include <fstream>
 
 #include "calcium_magnesium_calculator.h"
+#include "config.h"
 
 void CMC::cm_calculator::cm_calculate()
 {
     constexpr double magnesium_per_mol = 24.3; // 24.3g per Mol pure Magnesium weight
 
-    std::ifstream file("../../../data/calmag_config.txt");
+    std::ifstream file("../../../data/calmag_config.txt", std::ios::binary);
     if (!file.is_open())
     {
         std::cerr << "File can not be open!\n";
         return;
     }
-    
+
+    if (file.is_open())
+    {
+        file.seekg(0, std::ios::end);
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+
+        if (size > 0)
+        {
+        
+        }
+        else
+        {
+            std::cerr << "File is empty - start configuration.\n" << "\n";
+            CFG::cf_config cfg;
+            cfg.cf_configuration();
+        }       
+    }
+      
     std::string name_calcium_water;
     double value_calcium_water;
     if (file >> name_calcium_water >> value_calcium_water)
@@ -41,7 +60,7 @@ void CMC::cm_calculator::cm_calculate()
    
     if (water_liter <= 0)
     {
-        std::cout << "Error: No need to convert nothing!\n";
+        std::cerr << "Error: No need to convert nothing!\n";
     }
     else
     {
